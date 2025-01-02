@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="static/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classifier Performance Metrics</title>
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(45deg, #1e2231, #2c3e50);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        h2 {
+            text-align: center;
+            color: #f1f1f1;
+            margin-bottom: 30px;
+            font-size: 2em;
+            letter-spacing: 1px;
+            animation: fadeIn 0.7s ease-out;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #2c3e50;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            animation: fadeIn 0.7s ease-out;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #34495e;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(52, 73, 94, 0.5);
+        }
+
+        tr:hover {
+            background-color: rgba(52, 152, 219, 0.2);
+            cursor: pointer;
+            transform: scale(1.01);
+        }
+
+        caption {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #f1f1f1;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Highlight different performance metrics */
+        td:nth-child(2) { 
+            font-weight: bold; 
+            color: #3498db; 
+        }
+
+        td:nth-child(n+3):nth-child(-n+7) {
+            font-style: italic;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            table {
+                font-size: 0.8em;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Classifier Performance Results</h2>
+
+
+<table>
+    <caption>Balanced Random Forest Classifier</caption>
+    <tr>
+        <th>Cohort Type</th>
+        <th>Accuracy</th>
+        <th>Precision - Retention</th>
+        <th>Recall - Retention</th>
+        <th>F1 Score - Retention</th>
+        <th>Precision - Non Retention</th>
+        <th>Recall - Non Retention</th>
+        <th>F1 Score - Non Retention</th>
+        <th>Support - Retention</th>
+        <th>Support - Non Retention</th>
+    </tr>
+    <tr><td>2008-2010</td><td>0.7</td><td>0.07</td><td>1</td><td>0.2</td><td>1</td><td>0.81</td><td>0.89</td><td>2</td><td>85</td></tr>
+    <tr><td>2011-2013</td><td>0.94</td><td>0.62</td><td>0.88</td><td>0.48</td><td>0.99</td><td>0.86</td><td>0.92</td><td>8</td><td>100</td></tr>
+    <tr><td>2014-2017</td><td>0.95</td><td>0.8</td><td>1</td><td>0.3</td><td>0.98</td><td>0.78</td><td>0.87</td><td>5</td><td>103</td></tr>
+    <tr><td>2018-2021</td><td>0.94</td><td>0.75</td><td>0.75</td><td>0.26</td><td>0.99</td><td>0.85</td><td>0.91</td><td>4</td><td>104</td></tr>
+    <tr><td>2022-2024</td><td>0.85</td><td>0.38</td><td>0.9</td><td>0.53</td><td>0.99</td><td>0.85</td><td>0.91</td><td>10</td><td>100</td></tr>
+</table>
+
+
+<table>
+    <caption>Random Forest Classifier</caption>
+    <tr>
+        <th>Cohort Type</th>
+        <th>Accuracy</th>
+        <th>Precision - Retention</th>
+        <th>Recall - Retention</th>
+        <th>F1 Score - Retention</th>
+        <th>Precision - Non Retention</th>
+        <th>Recall - Non Retention</th>
+        <th>F1 Score - Non Retention</th>
+        <th>True Positive</th>
+        <th>Support - Non Retention</th>
+    </tr>
+    <tr><td>2008-2010</td><td>0.97</td><td>0</td><td>0</td><td>0</td><td>0.98</td><td>1</td><td>0.99</td><td>2</td><td>85</td></tr>
+    <tr><td>2011-2013</td><td>0.95</td><td>0.8</td><td>0.5</td><td>0.67</td><td>0.96</td><td>0.99</td><td>0.98</td><td>8</td><td>100</td></tr>
+    <tr><td>2014-2017</td><td>0.95</td><td>0</td><td>0</td><td>0</td><td>0.95</td><td>1</td><td>0.98</td><td>5</td><td>103</td></tr>
+    <tr><td>2018-2021</td><td>0.95</td><td>0</td><td>0</td><td>0</td><td>0.96</td><td>0.99</td><td>0.98</td><td>4</td><td>104</td></tr>
+    <tr><td>2022-2024</td><td>0.91</td><td>0.57</td><td>0.4</td><td>0.47</td><td>0.94</td><td>0.97</td><td>0.96</td><td>10</td><td>100</td></tr>
+</table>
+
+
+<table>
+    <caption>XGBoost Classifier</caption>
+    <tr>
+        <th>Cohort Type</th>
+        <th>Accuracy</th>
+        <th>Precision - Retention</th>
+        <th>Recall - Retention</th>
+        <th>F1 Score - Retention</th>
+        <th>Precision - Non Retention</th>
+        <th>Recall - Non Retention</th>
+        <th>F1 Score - Non Retention</th>
+        <th>True Positive</th>
+        <th>Support - Non Retention</th>
+    </tr>
+    <tr><td>2008-2010</td><td>0.97</td><td>0</td><td>0</td><td>0</td><td>0.98</td><td>0.99</td><td>0.99</td><td>2</td><td>85</td></tr>
+    <tr><td>2011-2013</td><td>0.95</td><td>0.8</td><td>0.5</td><td>0.62</td><td>0.96</td><td>0.99</td><td>0.98</td><td>8</td><td>100</td></tr>
+    <tr><td>2014-2017</td><td>0.95</td><td>0</td><td>0</td><td>0.25</td><td>0.95</td><td>1</td><td>0.98</td><td>5</td><td>103</td></tr>
+    <tr><td>2018-2021</td><td>0.96</td><td>0</td><td>0</td><td>0</td><td>0.96</td><td>0.99</td><td>0.98</td><td>4</td><td>104</td></tr>
+    <tr><td>2022-2024</td><td>0.92</td><td>0.5</td><td>0.5</td><td>0.56</td><td>0.95</td><td>0.97</td><td>0.96</td><td>10</td><td>100</td></tr>
+</table>
+
+
+<table>
+    <caption>Easy Ensemble Classifier</caption>
+    <tr>
+        <th>Cohort Type</th>
+        <th>Accuracy</th>
+        <th>Precision - Retention</th>
+        <th>Recall - Retention</th>
+        <th>F1 Score - Retention</th>
+        <th>Precision - Non Retention</th>
+        <th>Recall - Non Retention</th>
+        <th>F1 Score - Non Retention</th>
+        <th>True Positive</th>
+        <th>Support - Non Retention</th>
+    </tr>
+    <tr><td>2008-2010</td><td>0.75</td><td>0.08</td><td>1</td><td>0.15</td><td>1</td><td>0.74</td><td>0.85</td><td>2</td><td>85</td></tr>
+    <tr><td>2011-2013</td><td>0.82</td><td>0.42</td><td>0.88</td><td>0.42</td><td>0.99</td><td>0.81</td><td>0.9</td><td>8</td><td>100</td></tr>
+    <tr><td>2014-2017</td><td>0.81</td><td>0.27</td><td>1</td><td>0.33</td><td>1</td><td>0.82</td><td>0.9</td><td>5</td><td>103</td></tr>
+    <tr><td>2018-2021</td><td>0.82</td><td>0.29</td><td>1</td><td>0.44</td><td>1</td><td>0.82</td><td>0.9</td><td>4</td><td>104</td></tr>
+    <tr><td>2022-2024</td><td>0.86</td><td>0.4</td><td>1</td><td>0.57</td><td>1</td><td>0.85</td><td>0.92</td><td>10</td><td>100</td></tr>
+</table>
+
+</body>
+</html>
